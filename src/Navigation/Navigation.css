@@ -1,0 +1,24 @@
+.nav-container {
+  background: #222;
+  color: #fafafa;
+  padding: 8px;
+  border-bottom: 1px solid black;
+}
+
+ul {
+  display: flex;
+  margin: 2px 0 0;
+  padding: 0;
+}
+
+li {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  margin: 0 5px;
+  transition: 500ms all;
+}
+
+li:hover {
+  color: lightblue;
+}

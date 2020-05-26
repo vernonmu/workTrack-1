@@ -1,10 +1,28 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+}
+
+.page-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 100px;
   pointer-events: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 10px auto;
+  align-items: center;
+}
+
+.header h1 {
+  color: white;
+  font-weight: bold;
 }
 
 @media (prefers-reduced-motion: no-preference) {
