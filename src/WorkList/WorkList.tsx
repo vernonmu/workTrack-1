@@ -9,7 +9,6 @@ import {
   Paper,
   Button,
 } from "@material-ui/core";
-// import { RefreshContext, setNeedsRefresh } from "../State/State";
 import "./WorkList.css";
 
 interface IProps {
@@ -21,24 +20,27 @@ export const WorkList = (props: IProps) => {
   const { needsRefresh, setRefresh } = props;
   const [listOfTasks, setTasks] = useState([]);
 
-  const fetchWork = async () => {
-    const myHeaders = new Headers();
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-    };
-
-    fetch("/getworklist", requestOptions)
-      .then((res) => res.json())
-      .then((obj) => {
-        setTasks(obj.list);
-        setRefresh(false);
-      });
-  };
-
   useEffect(() => {
+    const fetchWork = async () => {
+      const myHeaders = new Headers();
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+      };
+
+      fetch("/getworklist", requestOptions)
+        .then((res) => res.json())
+        .then((obj) => {
+          setTasks(obj.list);
+          setRefresh(false);
+        })
+        .catch(err => {
+          console.error('error in fetch worklist', err)
+        });
+    };
+    
     fetchWork();
-  }, [needsRefresh]);
+  }, [needsRefresh, setRefresh]);
 
   useEffect(() => {
     window.console.log("listoftasks ", listOfTasks);

@@ -2,7 +2,7 @@ const bodyParser = require("body-parser");
 const express = require("express");
 
 const app = express();
-// const port = process.env.PORT || 5000;
+// TODO const port = process.env.PORT || 5000;
 const port = 5000;
 
 app.use(bodyParser.json());
@@ -13,8 +13,6 @@ const dummyDb = [];
 app.post("/addtrack", (req, res) => {
   const { taskName, dateDue, taskStatus, taskOwner, taskJules } = req.body;
 
-  console.log("req body ", req.body);
-
   const dateCreated = new Date();
   const work = {
     taskName,
@@ -24,7 +22,6 @@ app.post("/addtrack", (req, res) => {
     taskJules,
     dateCreated,
   };
-  console.log("work ", work);
   dummyDb.push(work);
   res.sendStatus(200);
 });
